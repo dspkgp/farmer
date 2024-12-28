@@ -1,4 +1,4 @@
-import pandas as pd 
+import pandas as pd
 import numpy as np
 from sklearn.linear_model import LogisticRegression
 from sklearn import preprocessing
@@ -13,12 +13,11 @@ from sklearn.impute import SimpleImputer
 
 df = pd.read_csv("data_processed.csv")
 
-#### Get features ready to model! 
-y = df.pop("cons_general").to_numpy()
-y[y< 4] = 0
-y[y>= 4] = 1
+df['target'] = df['target'].replace(2, 1)
 
-X = df.to_numpy()
+X = df.drop(['target'], axis=1)
+y = np.array(df['target'])
+
 X = preprocessing.scale(X) # Is standard
 # Impute NaNs
 
@@ -44,10 +43,3 @@ with open("metrics.json", 'w') as outfile:
 score = yhat == y
 score_int = [int(s) for s in score]
 df['pred_accuracy'] = score_int
-
-# Bar plot by region
-
-sns.set_color_codes("dark")
-ax = sns.barplot(x="region", y="pred_accuracy", data=df, palette = "Greens_d")
-ax.set(xlabel="Region", ylabel = "Model accuracy")
-plt.savefig("by_region.png",dpi=80)
