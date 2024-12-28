@@ -1,18 +1,11 @@
-import os
-import wget
+import numpy as np
+import pandas as pd
+from sklearn.datasets import load_iris
 
-# data from https://www.sciencedirect.com/science/article/pii/S2352340920303048
+# Load the diabetes dataset
+iris_X, iris_y = load_iris(return_X_y=True)
 
-# Download the zipped dataset
-url = 'https://md-datasets-cache-zipfiles-prod.s3.eu-west-1.amazonaws.com/yshdbyj6zy-1.zip'
-zip_name = "data.zip"
-wget.download(url, zip_name)
+df = pd.DataFrame(iris_X, columns=['col1', 'col2', 'col3', 'col4'])
+df['target'] = pd.Series(iris_y)
 
-# Unzip it and standardize the .csv filename
-import zipfile
-with zipfile.ZipFile(zip_name,"r") as zip_ref:
-    zip_ref.filelist[0].filename = 'data_raw.csv'
-    zip_ref.extract(zip_ref.filelist[0])
-
-os.remove(zip_name)
-
+df.to_csv('data_raw.csv', index=False)
