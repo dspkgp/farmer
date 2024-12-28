@@ -39,7 +39,3 @@ sensitivity = tp / (tp + fn)
 with open("metrics.json", 'w') as outfile:
         json.dump({ "accuracy": acc, "specificity": specificity, "sensitivity":sensitivity}, outfile)
 
-# Let's visualize within several slices of the dataset
-score = yhat == y
-score_int = [int(s) for s in score]
-df['pred_accuracy'] = score_int
