@@ -24,7 +24,5 @@ train:
   - path: train.py
     md5: 80ad33d8caf823fc1d5cdefcb5b9490a
   outs:
-  - path: by_region.png
-    md5: e7f3818fac35589b0c46dd65f8293e74
   - path: metrics.json
     md5: f4844c28505568f336c5f91db3f1beb3
