@@ -3,8 +3,13 @@ on: [push]
 jobs:
   run:
     runs-on: [ubuntu-latest]
+<<<<<<< HEAD
     container: docker://dvcorg/cml-py3:latest
 
+=======
+    # container: docker://dvcorg/cml-py3:latest
+    container: ghcr.io/iterative/cml:0-dvc2-base1
+>>>>>>> 5185299577e3c6626dd604455af33266130966e1
     steps:
       - uses: actions/checkout@v2
       - name: cml_run
