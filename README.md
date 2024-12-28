@@ -1,7 +1,3 @@
-# Modeling Swiss farmer's attitudes about climate change
-
-## Modeling data from [Kreft et al. 2020](https://www.sciencedirect.com/science/article/pii/S2352340920303048).
-
 ## In this tutorial, we'll compare ML models across two different Git branches of a project- and we'll do it in a continuous integration system (GitHub Actions) for automation superpowers! We'll cover:
 
 ## Why comparing model metrics takes more than a git diff
